@@ -1,22 +1,22 @@
 import { useState, useEffect } from "react";
 import { PublishSubscribe } from "../PublishSubscribe";
 
-export const useCounter = () => {
+export const useCounter = (event) => {
   let { subscribe, unsubscribe } = PublishSubscribe();
 
   useEffect(() => {
-    subscribe("modifyCounter", changeValue);
-    subscribe("modifyCounter", showValue);
-    // unsubscribe("modifyCounter", 1);
+    subscribe(event, changeValue);
+    subscribe(event, showValue);
+    // unsubscribe(event, 1);
   }, []);
 
   const [counterValue, setCounterValue] = useState(0);
 
-  function changeValue(_event, newCounterValue) {
+  function changeValue(event, newCounterValue) {
     setCounterValue(newCounterValue);
   }
 
-  function showValue(_event, newCounterValue) {
+  function showValue(event, newCounterValue) {
     console.log(`value is ${newCounterValue}`);
   }
 

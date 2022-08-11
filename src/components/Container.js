@@ -3,7 +3,7 @@ import { PublishSubscribe } from "../PublishSubscribe";
 
 export const Container = () => {
   let { publish } = PublishSubscribe();
-  let counterValue = useCounter();
+  let counterValue = useCounter("modifyCounter");
 
   function incrementEvent() {
     publish("modifyCounter", counterValue + 1);
